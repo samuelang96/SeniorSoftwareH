@@ -184,6 +184,7 @@
 -define:UNITY_EDITOR_OSX
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
+'Assets/AppManager.cs'
 'Assets/BarScripts/External/WizUtils/Logger/Log.cs'
 'Assets/BarScripts/External/WizUtils/Logger/LogLevel.cs'
 'Assets/BarScripts/External/WizUtils/Logger/Services/ConsoleService.cs'
@@ -198,9 +199,15 @@
 'Assets/BarScripts/Scanner/ScannerStatus.cs'
 'Assets/BarScripts/Settings/ScannerSettings.cs'
 'Assets/BarScripts/Webcam/UnityWebcam.cs'
+'Assets/MyShoppingListsPanel.cs'
+'Assets/Samples/Boot.cs'
+'Assets/Samples/Continuous/ContinuousDemo.cs'
+'Assets/Samples/Simple/SimpleDemo.cs'
+'Assets/Scripts/ListButton.cs'
 'Assets/Scripts/PanelChangeManager.cs'
 'Assets/Scripts/Product.cs'
 'Assets/Scripts/RequestsManager.cs'
+'Assets/Scripts/ShoppingList.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/UnityScript.dll'

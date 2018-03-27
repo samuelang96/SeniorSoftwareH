@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AppManager.cs" />
      <Compile Include="Assets\BarScripts\External\WizUtils\Logger\Log.cs" />
      <Compile Include="Assets\BarScripts\External\WizUtils\Logger\LogLevel.cs" />
      <Compile Include="Assets\BarScripts\External\WizUtils\Logger\Services\ConsoleService.cs" />
@@ -65,12 +66,15 @@
      <Compile Include="Assets\BarScripts\Scanner\ScannerStatus.cs" />
      <Compile Include="Assets\BarScripts\Settings\ScannerSettings.cs" />
      <Compile Include="Assets\BarScripts\Webcam\UnityWebcam.cs" />
+     <Compile Include="Assets\MyShoppingListsPanel.cs" />
      <Compile Include="Assets\Samples\Boot.cs" />
      <Compile Include="Assets\Samples\Continuous\ContinuousDemo.cs" />
      <Compile Include="Assets\Samples\Simple\SimpleDemo.cs" />
+     <Compile Include="Assets\Scripts\ListButton.cs" />
      <Compile Include="Assets\Scripts\PanelChangeManager.cs" />
      <Compile Include="Assets\Scripts\Product.cs" />
      <Compile Include="Assets\Scripts\RequestsManager.cs" />
+     <Compile Include="Assets\Scripts\ShoppingList.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

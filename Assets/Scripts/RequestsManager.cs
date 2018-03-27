@@ -5,7 +5,10 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 public class RequestsManager : MonoBehaviour {
 	public Text productReturnText;
+	public AppManager am;
 	// Use this for initialization
+	public Product gotProduct;
+
 	void Start () {
 		StartCoroutine(GetText());
 		GetText ();
@@ -17,7 +20,11 @@ public class RequestsManager : MonoBehaviour {
 		
 	}
 
-	public IEnumerator GetProduct(string barcode){
+	public void GetProduct(string barcode){
+		StartCoroutine (GetProductRoutine (barcode));
+	}
+
+	public IEnumerator GetProductRoutine(string barcode){
 		if (barcode.Length < 13) {
 			barcode = "0" + barcode;
 		}
@@ -35,8 +42,11 @@ public class RequestsManager : MonoBehaviour {
 			byte[] results = www.downloadHandler.data;
 		}
 		productReturnText.text = www.downloadHandler.text;
-		Debug.Log ("BARCODE: " + barcode);
-		Debug.Log (www.downloadHandler.text);
+		gotProduct = new Product (www.downloadHandler.text);
+		//Debug.Log ("http://heb.cs.trinity.edu/api/products/" + barcode);
+		am.products.Add (new Product (www.downloadHandler.text));
+		//Debug.Log ("BARCODE: " + barcode);
+		//Debug.Log (www.downloadHandler.text);
 	}
 
 	IEnumerator GetText() {
@@ -48,7 +58,7 @@ public class RequestsManager : MonoBehaviour {
 		}
 		else {
 			// Show results as text
-			Debug.Log(www.downloadHandler.text);
+			//Debug.Log(www.downloadHandler.text);
 
 			// Or retrieve results as binary data
 

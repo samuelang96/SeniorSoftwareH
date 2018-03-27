@@ -84,7 +84,7 @@ public class SimpleDemo : MonoBehaviour {
 		BarcodeScanner.Scan((barCodeType, barCodeValue) => {
 			BarcodeScanner.Stop();
 			TextHeader.text = "Found: " + barCodeType + " / " + barCodeValue;
-			StartCoroutine(rm.GetProduct(barCodeValue)); 
+			StartCoroutine(rm.GetProductRoutine(barCodeValue)); 
 			//jsonText.text = rm.GetProduct(barCodeValue);
 
 			// Feedback
