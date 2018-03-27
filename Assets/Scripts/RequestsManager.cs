@@ -25,7 +25,7 @@ public class RequestsManager : MonoBehaviour {
 	}
 
 	public IEnumerator GetProductRoutine(string barcode){
-		if (barcode.Length < 13) {
+		while (barcode.Length < 13) {
 			barcode = "0" + barcode;
 		}
 		UnityWebRequest www = UnityWebRequest.Get("http://heb.cs.trinity.edu/api/products/" + barcode);
@@ -43,10 +43,8 @@ public class RequestsManager : MonoBehaviour {
 		}
 		productReturnText.text = www.downloadHandler.text;
 		gotProduct = new Product (www.downloadHandler.text);
-		//Debug.Log ("http://heb.cs.trinity.edu/api/products/" + barcode);
 		am.products.Add (new Product (www.downloadHandler.text));
-		//Debug.Log ("BARCODE: " + barcode);
-		//Debug.Log (www.downloadHandler.text);
+
 	}
 
 	IEnumerator GetText() {
@@ -58,8 +56,6 @@ public class RequestsManager : MonoBehaviour {
 		}
 		else {
 			// Show results as text
-			//Debug.Log(www.downloadHandler.text);
-
 			// Or retrieve results as binary data
 
 			byte[] results = www.downloadHandler.data;
