@@ -23,6 +23,8 @@ public class RequestsManager : MonoBehaviour {
 	public void GetProduct(string barcode){
 		StartCoroutine (GetProductRoutine (barcode));
 	}
+	//Third floor of Northrup.
+	//browser 
 
 	public IEnumerator GetProductRoutine(string barcode){
 		while (barcode.Length < 13) {
@@ -41,6 +43,7 @@ public class RequestsManager : MonoBehaviour {
 			// Or retrieve results as binary data
 			byte[] results = www.downloadHandler.data;
 		}
+		Debug.Log ("grabbing product...");
 		productReturnText.text = www.downloadHandler.text;
 		gotProduct = new Product (www.downloadHandler.text);
 		am.products.Add (new Product (www.downloadHandler.text));
@@ -57,6 +60,9 @@ public class RequestsManager : MonoBehaviour {
 		else {
 			// Show results as text
 			// Or retrieve results as binary data
+			//retiring at the end of this semester
+			//Patricia Simonite Art Department
+			//trinity id: 0035449
 
 			byte[] results = www.downloadHandler.data;
 		}
