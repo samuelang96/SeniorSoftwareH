@@ -8,6 +8,7 @@ public class ListButton : MonoBehaviour {
 
 	public int index;
 	public Text buttonText;
+	public Text countText;
 	// Use this for initialization
 	void Start () {
 		

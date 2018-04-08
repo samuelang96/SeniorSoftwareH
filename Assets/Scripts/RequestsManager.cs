@@ -30,7 +30,8 @@ public class RequestsManager : MonoBehaviour {
 		while (barcode.Length < 13) {
 			barcode = "0" + barcode;
 		}
-		UnityWebRequest www = UnityWebRequest.Get("http://heb.cs.trinity.edu/api/products/" + barcode);
+		//UnityWebRequest www = UnityWebRequest.Get("http://heb.cs.trinity.edu/api/products/" + barcode);
+		UnityWebRequest www = UnityWebRequest.Get("http://198.58.123.175/api/products/" + barcode);
 		yield return www.SendWebRequest();
 
 		if(www.isNetworkError || www.isHttpError) {
@@ -38,20 +39,22 @@ public class RequestsManager : MonoBehaviour {
 		}
 		else {
 			// Show results as text
-			Debug.Log(www.downloadHandler.text);
+			//Debug.Log(www.downloadHandler.text);
 
 			// Or retrieve results as binary data
 			byte[] results = www.downloadHandler.data;
 		}
-		Debug.Log ("grabbing product...");
-		productReturnText.text = www.downloadHandler.text;
-		gotProduct = new Product (www.downloadHandler.text);
-		am.products.Add (new Product (www.downloadHandler.text));
+		//Debug.Log ("grabbing product...");
+		string product_string = www.downloadHandler.text;
+		productReturnText.text = product_string;
+		gotProduct = new Product (product_string);
+		am.products.Add (new Product (product_string));
 
 	}
 
+	//Bill Christ a 
 	IEnumerator GetText() {
-		UnityWebRequest www = UnityWebRequest.Get("http://heb.cs.trinity.edu/api/products/" + "0070847012474");
+		UnityWebRequest www = UnityWebRequest.Get("http://198.58.123.175/api/products/" + "0070847012474");
 		yield return www.SendWebRequest();
 
 		if(www.isNetworkError || www.isHttpError) {

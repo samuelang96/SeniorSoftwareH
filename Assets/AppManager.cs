@@ -18,6 +18,8 @@ public class AppManager : MonoBehaviour {
 	//string p1 = "{"y":2.0,"x":1.0,"price":244,"name":"Monster Energy Zero Ultra","id":1,"ean":"0070847012474"}"
 	void Start () {
 		myLists = new List<ShoppingList> ();
+		Product p = new Product ();
+		Debug.Log ("SAVED PRODUCT: " + p.ToJsonString ());
 		//myLists = new List<ShoppingList> ();
 		//Debug.Log ("JSON STRING: ");
 		//Product p = new Product();

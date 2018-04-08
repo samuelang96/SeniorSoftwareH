@@ -23,31 +23,63 @@ public class SearchPanel : MonoBehaviour {
 	}
 
 	public void AddItem (ListButton lb){
-		am.myLists [slv.index].Add (am.products [lb.index]);
-		Debug.Log (am.myLists [slv.index].products.Count);
+		bool hasItemAlready = false;
+		Debug.Log ("Adding Item");
+		for (int i = 0; i < am.myLists [slv.index].products.Count; i++) {
+			if (am.myLists [slv.index].products [i].data.name == lb.buttonText.text) {
+				hasItemAlready = true;
+				am.myLists [slv.index].IncrementProduct (i, 1);
+			}
+		}
+		if (!hasItemAlready) {
+			am.myLists [slv.index].Add (am.products [lb.index]);
+		}
+		RefreshSearchList ();
+	}
+
+	public void SubItem (ListButton lb){
+		bool hasItemAlready = false;
+		for (int i = 0; i < am.myLists [slv.index].products.Count; i++) {
+			if (am.myLists [slv.index].products [i].data.name == lb.buttonText.text) {
+				hasItemAlready = true;
+				am.myLists [slv.index].IncrementProduct (i, -1);
+			}
+		}
+		RefreshSearchList ();
 	}
 
 	public void ToggleColor (Button b){
 		b.GetComponent<Image> ().color = Color.green;
 	}
 
+	void RefreshSearchList(){
+		for (int i = 0; i < buttons.Count; i++) {
+			Destroy (buttons [i].gameObject);
+		}
+
+		buttons = new List<GameObject> ();
+		for (int i = 0; i < am.products.Count; i++) {
+			if (searchBar.text != "" && am.products [i].data.name.Contains (searchBar.text)) {
+				GameObject newButton = Instantiate (button, buttonSpawn.transform);
+				ListButton lb = newButton.GetComponent<ListButton> ();
+				buttons.Add (newButton);
+				lb.index = i;
+				lb.buttonText.text = am.products [i].data.name;
+				lb.countText.text = "0";
+				for (int j = 0; j < am.myLists [slv.index].products.Count; j++) {
+					if (am.myLists [slv.index].products [j].data.name == lb.buttonText.text) {
+						lb.countText.text = am.myLists [slv.index].productCounts [j].ToString ();
+					}
+				}
+			}
+		}
+	}
+
+
 	IEnumerator SearchRoutine(){
 		while (true) {
 			yield return new WaitForSeconds (1);
-			for (int i = 0; i < buttons.Count; i++) {
-				Destroy (buttons [i].gameObject);
-			}
-
-			buttons = new List<GameObject> ();
-			for (int i = 0; i < am.products.Count; i++) {
-				if (searchBar.text != "" && am.products [i].name.Contains (searchBar.text)) {
-					GameObject newButton = Instantiate (button, buttonSpawn.transform);
-					ListButton lb = newButton.GetComponent<ListButton> ();
-					buttons.Add (newButton);
-					lb.index = i;
-					lb.buttonText.text = am.products [i].name;
-				}
-			}
+			RefreshSearchList ();
 		}
 	}
 }

@@ -4,46 +4,48 @@ using UnityEngine;
 
 [System.Serializable]
 public class Product {
-	public float y;
-	public float x; 
-	public int price;
-	public string name;
-	public int id;
-	public string ean;
+	public Data data;
 
 	public Product(){
-		price = 875;
-		name = "Clorox";
-		id = 1;
-		ean = "0044600046907";
-		x = 1;
-		y = 2;
+		data = new Data ();
+		data.price = 875;
+		data.name = "Clorox";
+		data.id = 1;
+		data.ean = "0044600046907";
+		data.x = 1;
+		data.y = 2;
 	}
 
 	public Product(string jsonString){
-		Data d = JsonUtility.FromJson<Data> (jsonString);
-		Product p = d.data;
+		Product p = JsonUtility.FromJson<Product> (jsonString);
+		data = new Data ();
+		data = p.data;
+		//Product p = d.data;
 		//Debug.Log (p.id);
-		price = p.price;
-		name = p.name;
-		id = p.id;
-		ean = p.ean;
-		x = p.x;
-		y = p.y;
+
+
+		Debug.Log ("LOADED PRODUCT: " + JsonUtility.ToJson(this));
 	}
 
 	public string ToJsonString(){
-		Data d = new Data ();
-		string json = JsonUtility.ToJson (d);
-		Debug.Log(json);
+		//Data d = new Data ();
+		//d.price = price;
+		//d.name = name;
+		//d.id = id;
+		//d.ean = ean;
+		//d.x = x;
+		//d.y = y;
+		string json = JsonUtility.ToJson (this);
 		return json;
 	}
 }
 
 [System.Serializable]
 public class Data {
-	public Product data;
-	public Data(){
-		data = new Product ();
-	}
+	public float y;
+	public float x; 
+	public int price;
+	public string name;
+	public int id;
+	public string ean;
 }
