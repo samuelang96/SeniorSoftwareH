@@ -17,9 +17,13 @@ public class ShoppingListView : MonoBehaviour {
 	public int index = 0;
 
 	List<GameObject> listButtons;
+	ShoppingSequencePanel ssp;
+	PanelChangeManager pcm;
 
 	// Use this for initialization
 	void Start () {
+		pcm = GameObject.Find ("PanelChangeManager").GetComponent<PanelChangeManager> ();
+		ssp = GameObject.Find ("ShoppingSequencePanel").GetComponent<ShoppingSequencePanel> ();
 		listButtons = new List<GameObject> ();	
 	}
 	
@@ -93,5 +97,11 @@ public class ShoppingListView : MonoBehaviour {
 	public void DeincrementProductInList(ListButton lb){
 		am.myLists [index].IncrementProduct (lb.index, -1);
 		Refresh ();
+	}
+
+	public void StartShopping(){
+		pcm.ShowPanel (7);
+		ssp.Initiate (am.myLists [index]);
+
 	}
 }

@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\ShoppingList.cs" />
      <Compile Include="Assets\SearchPanel.cs" />
      <Compile Include="Assets\ShoppingListView.cs" />
+     <Compile Include="Assets\ShoppingSequencePanel.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
